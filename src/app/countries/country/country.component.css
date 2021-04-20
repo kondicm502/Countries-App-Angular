@@ -1,0 +1,49 @@
+:host {
+  background-color: var(--color-bg-element);
+  color: var(--color-text);
+  width: 100%;
+  box-shadow: 0 0 0.3rem -0.1rem rgba(0, 0, 0, 0.5);
+  border-radius: 0.25rem;
+  border: none;
+  outline: none;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.1s ease;
+}
+
+:host:hover {
+  box-shadow: 0 0.25rem 0.75rem -0.25rem black;
+  transform: translateY(-0.25rem);
+}
+
+.flag-image {
+  height: 9.5rem;
+}
+
+.infos {
+  padding: 1rem;
+}
+
+h4 {
+  font-family: var(--font-family);
+  font-size: 1.15rem;
+  margin-bottom: 0.25rem;
+}
+
+h6 {
+  font-family: var(--font-family);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+h6 span {
+  font-weight: 400;
+}
+
+/* Small Screen */
+@media(max-width: 650px) {
+  :host {
+    width: 18rem;
+    max-width: 100%;
+  }
+}

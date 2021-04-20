@@ -1,0 +1,72 @@
+<!-- Filters -->
+<div class="filters">
+  <!-- Search By Name -->
+  <div class="search-bar">
+    <label for="searchByName">
+      <fa-icon [icon]="faSearch"></fa-icon>
+    </label>
+    <input 
+    type="search" id="searchByName" 
+    #searchByName
+    placeholder="Search for a country..."
+    (input)="getCountriesByName($event.target.value, filterByRegion)">
+
+    <!-- Error Message -->
+    <small 
+    class="error-msg"
+    *ngIf="showNameErrorMsg">I can't find a country, please check the name again.</small>
+  </div>
+
+  <!-- Filter By Region -->
+  <select 
+  id="filterByRegion"
+  #filterByRegion
+  (change)="getCountriesByRegion($event.target.value, searchByName)">
+    <option value="" hidden>Filter By Region</option>
+    <option value="africa">Africa</option>
+    <option value="americas">Americas</option>
+    <option value="asia">Asia</option>
+    <option value="europe">Europe</option>
+    <option value="oceania">Oceania</option>
+    <option value="all">All</option>
+  </select>
+</div>
+
+<!-- Preloader -->
+<app-preloader [showPreloader]="countries.length === 0"></app-preloader>
+
+<!-- Countries List -->
+<div class="countries-list">
+  <app-country 
+  *ngFor="let country of onePage"
+  [country]="country"
+  [routerLink]="['/countries', country?.alpha3Code]"></app-country>
+</div>
+
+<!-- Pagination -->
+<div class="pagination-container" *ngIf="countries.length > 0">
+  <div class="pagination">
+    <button 
+    class="btn-static"
+    [disabled]="paginationSetupObj.page === 1"
+    (click)="paginationHandler(1)">
+      <fa-icon [icon]="faAngleDblLeft"></fa-icon>
+    </button>
+  
+    <ng-container *ngFor="let item of paginationSetupObj.pageIterator">
+    <button 
+    *ngIf="item - 3 < paginationSetupObj.page && item + 3 > paginationSetupObj.page"
+    [ngClass]="{'active-page': item === paginationSetupObj.page}"
+    (click)="paginationHandler(item)">{{item}}</button>
+    </ng-container>
+  
+    <button 
+    class="btn-static"
+    [disabled]="paginationSetupObj.page === paginationSetupObj.numberOfPages"
+    (click)="paginationHandler(paginationSetupObj.numberOfPages)">
+      <fa-icon [icon]="faAngleDblRight"></fa-icon>
+    </button>
+  </div>
+
+  <p>{{paginationSetupObj.page}} / {{paginationSetupObj.numberOfPages}}</p>
+</div>

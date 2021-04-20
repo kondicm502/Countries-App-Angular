@@ -1,0 +1,12 @@
+<!-- Flag -->
+<div 
+class="flag-image" 
+[ngStyle]="{background: 'url(' + country?.flag + ') center center/cover'}"></div>
+
+<!-- Infos -->
+<div class="infos">
+  <h4>{{country?.name}}</h4>
+  <h6>Population: <span>{{country?.population}}</span></h6>
+  <h6>Region: <span>{{country?.region}}</span></h6>
+  <h6>Capital: <span>{{country?.capital}}</span></h6>
+</div>

@@ -1,0 +1,36 @@
+.loader-container {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  align-items: center;
+  height: 10rem;
+  margin: auto;
+}
+
+.circle {
+  background: var(--color-text);
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+}
+
+@keyframes bounce {
+  0% { transform: translateY(0rem); }
+  50% { transform: translateY(1rem); }
+  100% { transform: translateY(0rem); }
+}
+
+.circle-1 {
+  animation: bounce 0.6s infinite linear;
+  animation-delay: 0;
+}
+
+.circle-2 {
+  animation: bounce 0.6s infinite linear;
+  animation-delay: 0.1s;
+}
+
+.circle-3 {
+  animation: bounce 0.6s infinite linear;
+  animation-delay: 0.2s;
+}

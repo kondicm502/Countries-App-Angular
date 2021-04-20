@@ -1,0 +1,60 @@
+<!-- Back Button -->
+<a href="#"
+class="btn btn-back"
+[routerLink]="['/countries']">
+  <fa-icon [icon]="faArrowLeft"></fa-icon>
+  Back
+</a>
+
+<!-- Preloader -->
+<app-preloader [showPreloader]="!country"></app-preloader>
+
+<!-- Country Infos -->
+<div class="country-data" *ngIf="country">
+
+  <!-- Flag -->
+  <div class="flag-image" >
+    <img [src]="country?.flag" alt="flag-image">
+  </div>
+
+  <!-- Infos -->
+  <div class="country-infos" >
+    <h4>{{country?.name}}</h4>
+
+    <div class="country-details">
+      <div class="column">
+        <h6>Native Name: <span>{{country?.nativeName}}</span></h6>
+        <h6>Population: <span>{{country?.population}}</span></h6>
+        <h6>Region: <span>{{country?.region}}</span></h6>
+        <h6>Sub Region: <span>{{country?.subregion}}</span></h6>
+        <h6>Capital: <span>{{country?.capital}}</span></h6>
+      </div>
+
+      <div class="column">
+        <h6>Top Level Domain: 
+          <span *ngFor="let domain of country?.topLevelDomain; index as i">
+            {{i === country.topLevelDomain.length - 1 ? domain : domain + ', ' }}
+          </span>
+        </h6>
+        <h6>Currencies: 
+          <span *ngFor="let currencie of country?.currencies; index as i">
+            {{i === country.currencies.length - 1 ? currencie.name : currencie.name + ', ' }}
+          </span>
+        </h6>
+        <h6>Languages: 
+          <span *ngFor="let language of country?.languages; index as i">
+            {{i === country.languages.length - 1 ? language.name : language.name + ', ' }}
+          </span>
+        </h6>
+      </div>
+    </div>
+
+    <div class="country-borders" *ngIf="country?.borders.length > 0">
+      <h6>Border Countries: </h6>
+      <a href="#"
+      class="btn btn-country"
+      *ngFor="let border of country?.borders"
+      [routerLink]="['/countries', border]">{{border}}</a>
+    </div>
+  </div>
+</div>

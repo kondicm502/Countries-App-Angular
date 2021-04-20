@@ -1,0 +1,18 @@
+:host {
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+}
+
+h2 {
+  color: var(--color-text);
+  font-family: var(--font-family);
+  font-size: 1.75rem;
+}
+
+/* Small Screen */
+@media (max-width: 650px) {
+  h2 { font-size: 1.25rem; }
+}
